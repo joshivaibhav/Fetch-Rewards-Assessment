@@ -1,4 +1,4 @@
-# Fetch Rewards Back-end Take home assignment
+# Fetch Rewards Back-end Engineering Assesment
 
 # Requirements
 * python3
