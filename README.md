@@ -88,10 +88,8 @@ The REST API to the app is described below.
 
     {"DANNON":1000,"MILLER COORS":5300,"UNILEVER":0}
 
-# Makefile
+# Useful Docs and References
+* [Flask Documentation](https://flask.palletsprojects.com/en/1.1.x/)
+* [Pip Installer for Python] (https://pypi.org/project/pip/)
+* [Postman Docs] (https://learning.postman.com/docs/getting-started/introduction/)
 
-| **Options**         | **Description**                                                                                        |
-| ------------------- | ------------------------------------------------------------------------------------------------------ |
-| `app`             | Starts the application at default port 5000                                     |
-| `test`            | Runs the Flask End-to End API tests using pytest with coverage                                                   |
-|  `packages`       | Installs the necessary packages to run and test this application                  |
