@@ -26,6 +26,12 @@ The server is up and running at http:\\localhost:5000. Now its time to test the 
 
 The following table shows the different API endpoints and their specifications. 
 
+| API endpoint   |Body Parameters                |Methods Allowed              |Body / Payload Type |End_point description|  
+|----------------|-------------------------------|-----------------------------|--------------------|---------------------|
+|/add_points|`'payer'`, `'points'`, `'transaction_timestamp'` |`POST`|`JSON`|Add payer points to user account|
+|/deduct_points |`'points_to_deduct'`|`DELETE`|`JSON`|deduct points from the user account|
+|/get_balance   |None|`GET`|No payload|retrieve the points balance in the user account|
+
 ## Add points to the User account
 
 ### Request
