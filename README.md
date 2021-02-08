@@ -134,13 +134,14 @@ Curl is a very handy command to fire HTTP requests from the terminal.
 
 ### ---> Add points to user account (/add_points)
 
-### Request
+### Request Params and Response
 
       Method = `POST`
       Parameters = `payer`, `points`, `transaction_timestamp` 
       Content-Type = `application/json`
       
-      The image below shows the postman configuration for the request.
+      The image below shows the postman configuration for the request. The response is also shown below in the same image
+      [/add_points](https://github.com/joshivaibhav/Fetch-Rewards-Assessment/blob/main/imgs/add_points_postman.JPG)
 
 ### Response
     
@@ -153,7 +154,8 @@ Curl is a very handy command to fire HTTP requests from the terminal.
       Parameters = `points_to_deduct`
       Content-Type = `application/json`
       
-      Postman confguration shown below :-
+      The image below shows the postman configuration for the request. The response is also shown below in the same image
+      [/add_points](https://github.com/joshivaibhav/Fetch-Rewards-Assessment/blob/main/imgs/deduct_points_postman.JPG)
     
 ### Response
 
@@ -163,7 +165,8 @@ Curl is a very handy command to fire HTTP requests from the terminal.
       Method = `GET`
       Content-Type = `application/json`
       
-      Postman configuration is shown below
+      The image below shows the postman configuration for the request. The response is also shown below in the same image
+      [/add_points](https://github.com/joshivaibhav/Fetch-Rewards-Assessment/blob/main/imgs/get_balance_postman.JPG)
     
 ### Response
       {
