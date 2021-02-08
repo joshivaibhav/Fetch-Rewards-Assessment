@@ -8,34 +8,23 @@ Once you have Python installed, you will need the dependencies / requirements fo
 ```
 pip install -r requirements.txt
 ```
+# Running this project
 
-# Install Requirements
-```
-bash
-cd Fetch_Rewards
-make package
-```
+Once you have the requirements installed, navigate to the project folder and open up the terminal. Fire up the flask server by the below command:
 
-# Assumptions
-* add_points REST endpoint accept parameters as a json constisting of payerName, points and transactionDate
-
-# Run the app
 ```
-bash
-cd Fetch_Rewards
-make app
+python api_server.py
+```
+You should see output as below :-
 ```
 
-# Run the tests
-```
-bash
-cd Fetch_Rewards
-make test
 ```
 
-# REST API
+The server is up and running at http:\\localhost:5000. Now its time to test the API.
 
-The REST API to the app is described below.
+# REST API Specifications
+
+The following table shows the different API endpoints and their specifications. 
 
 ## Add points to the User account
 
@@ -92,4 +81,6 @@ The REST API to the app is described below.
 * [Flask Documentation](https://flask.palletsprojects.com/en/1.1.x/)
 * [Pip Installer for Python](https://pypi.org/project/pip/)
 * [Postman Docs](https://learning.postman.com/docs/getting-started/introduction/)
+
+
 
