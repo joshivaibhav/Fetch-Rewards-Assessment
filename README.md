@@ -17,10 +17,19 @@ python api_server.py
 ```
 You should see output as below :-
 ```
+*  Serving Flask app "api_server" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 414-182-867
+ * Running on http://127.0.0.1:5000/
 
 ```
 
-The server is up and running at http:\\localhost:5000. Now its time to test the API.
+The server is up and running at http:\\127.0.0.1:5000/. Now its time to test the API and view the responses.
 
 # REST API Specifications
 
@@ -32,21 +41,41 @@ The following table shows the different API endpoints and their specifications.
 |/deduct_points |`'points_to_deduct'`|`DELETE`|`JSON`|deduct points from the user account|
 |/get_balance   |None|`GET`|No payload|retrieve the points balance in the user account|
 
-## Add points to the User account
+# Testing the API
+
+You can test the API by running the test_api_server script :-
+```
+python api_server.py
+```
+# Viewing the response
+There are number of ways to view the response of the API endpoint. You can either use the terminal go for a convenient API client like Postman. Examples for both are provided below.
+
+## Using the 'curl' command
+### Endpoint -> /add_points
 
 ### Request
 
-`POST /add_points/`
+Method = `POST`
+Parameters = `payer`, `points`, `transaction_timestamp` 
+Content-Type = `application/json`
 
-    curl -i -H 'Accept: application/json''payerName='DANNON'&'points'=300'&'transactionDate'="10/31 10AM' http://localhost:5000/add_points/
-
+Command (Windows):
+    `curl -X POST -H "Content-Type: application/json" --data "{\"payer\": \"UNILIVER\", \"points\":\"200\", \"transaction_timestamp\": \"02/04 5PM\"}" http://127.0.0.1:5000/add_points`
+    
+Command (Linux, Mac):
+`curl -i -H 'Accept: application/json''payer='DANNON'&'points'=300'&'transaction_timestamp'="10/31 10AM' http://localhost:5000/add_points/`
+    
 ### Response
+    Successfully added points to the user's account
+    
+### Headers
+    HTTP/1.0 200 OK
+    Content-type: application/json
+    Content-Length: 47
+    Server: Werkzeug/1.0.1 Python/3.6.8
+    Date: Sun, 07 Feb 2021 18:40:11 GM
 
-    HTTP/1.1 200 OK
-    Date: Thu, 24 Feb 2011 12:36:30 GMT
-    Status: 200 OK
-    Connection: close
-    Content-Type: application/json
+## Add points to the User account
 
 
 ## Deduct points from the User account
