@@ -50,7 +50,7 @@ python api_server.py
 # Viewing the response
 There are number of ways to view the response of the API endpoint. You can either use the terminal go for a convenient API client like Postman. Examples for both are provided below.
 
-## Using the 'curl' command
+## 1) Using the 'curl' command
 Curl is a very handy command to fire HTTP requests from the terminal.
 
 ### ---> Add points to user account (/add_points)
@@ -128,15 +128,56 @@ Curl is a very handy command to fire HTTP requests from the terminal.
     Server: Werkzeug/1.0.1 Python/3.6.8
     Date: Sun, 07 Feb 2021 18:40:11 GM
     
-## Using Postman API Client
+## 2) Using Postman API Client
+ Postman is a popular API client that makes it easy for developers to create, share, test and document APIs. It can be used as a browser extension or as a native standalone app as per the platform. Install Postman from [here](https://www.postman.com/downloads/). 
+ 
 
+### ---> Add points to user account (/add_points)
 
+### Request
+
+      Method = `POST`
+      Parameters = `payer`, `points`, `transaction_timestamp` 
+      Content-Type = `application/json`
+      
+      The image below shows the postman configuration for the request.
+
+### Response
+    
+    
+### ---> Deduct points from user account (/deduct_points)
+
+### Request
+
+      Method = `DELETE`
+      Parameters = `points_to_deduct`
+      Content-Type = `application/json`
+      
+      Postman confguration shown below :-
+    
+### Response
+
+### ---> Get points balance (/get_balance)
+
+### Request
+      Method = `GET`
+      Content-Type = `application/json`
+      
+      Postman configuration is shown below
+    
+### Response
+      {
+         "DANNON":1000,
+         "MILLER COORS":5300,
+         "UNILEVER":0
+       }
+    
 
 
 # Useful Docs and References
 * [Flask Documentation](https://flask.palletsprojects.com/en/1.1.x/)
 * [Pip Installer for Python](https://pypi.org/project/pip/)
-* [Postman Docs](https://learning.postman.com/docs/getting-started/introduction/)
+* [Postman Tutorial](https://learning.postman.com/docs/getting-started/introduction/)
 
 
 
