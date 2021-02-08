@@ -90,6 +90,6 @@ The REST API to the app is described below.
 
 # Useful Docs and References
 * [Flask Documentation](https://flask.palletsprojects.com/en/1.1.x/)
-* [Pip Installer for Python] (https://pypi.org/project/pip/)
-* [Postman Docs] (https://learning.postman.com/docs/getting-started/introduction/)
+* [Pip Installer for Python](https://pypi.org/project/pip/)
+* [Postman Docs](https://learning.postman.com/docs/getting-started/introduction/)
 
