@@ -51,19 +51,21 @@ python api_server.py
 There are number of ways to view the response of the API endpoint. You can either use the terminal go for a convenient API client like Postman. Examples for both are provided below.
 
 ## Using the 'curl' command
-### Endpoint -> /add_points
+Curl is a very handy command to fire HTTP requests from the terminal.
+
+### Add points to user account (/add_points)
 
 ### Request
 
-Method = `POST`
-Parameters = `payer`, `points`, `transaction_timestamp` 
-Content-Type = `application/json`
+      Method = `POST`
+      Parameters = `payer`, `points`, `transaction_timestamp` 
+      Content-Type = `application/json`
 
-Command (Windows):
-    `curl -X POST -H "Content-Type: application/json" --data "{\"payer\": \"UNILIVER\", \"points\":\"200\", \"transaction_timestamp\": \"02/04 5PM\"}" http://127.0.0.1:5000/add_points`
+### Command (Windows):
+    curl -X POST -H "Content-Type: application/json" --data "{\"payer\": \"UNILIVER\", \"points\":\"200\", \"transaction_timestamp\": \"02/04 5PM\"}" http://127.0.0.1:5000/add_points
     
-Command (Linux, Mac):
-`curl -i -H 'Accept: application/json''payer='DANNON'&'points'=300'&'transaction_timestamp'="10/31 10AM' http://localhost:5000/add_points/`
+### Command (Linux, Mac):
+    curl -i -H 'Accept: application/json''payer='DANNON'&'points'=300'&'transaction_timestamp'="10/31 10AM' http://localhost:5000/add_points/
     
 ### Response
     Successfully added points to the user's account
@@ -75,42 +77,56 @@ Command (Linux, Mac):
     Server: Werkzeug/1.0.1 Python/3.6.8
     Date: Sun, 07 Feb 2021 18:40:11 GM
 
-## Add points to the User account
-
-
-## Deduct points from the User account
+### Deduct points from user account (/deduct_points)
 
 ### Request
 
-`DELETE /delete_points/`
+      Method = `DELETE`
+      Parameters = `points_to_deduct`
+      Content-Type = `application/json`
 
-    curl -i -H 'Accept: application/json''points_to_deduct'=5000 http://localhost:5000/delete_points/
-
+### Command (Windows):
+    curl -X DELETE -H "Content-Type: application/json" --data "{\"points-to_deduct\": \"5000\"}" http://127.0.0.1:5000/deduct_points
+    
+### Command (Linux, Mac):
+    curl -X DELETE -H "Content-Type: application/json" --data "{\"points-to_deduct\": \"5000\"}" http://127.0.0.1:5000/deduct_points
+    
 ### Response
-
-    HTTP/1.1 200 OK
-    Date: Thu, 24 Feb 2011 12:36:30 GMT
-    Status: 200 OK
-    Connection: close
-    Content-Type: application/json
-    Content-Length: 35
 
     [["DANNON",-100,"now"],["UNILEVER",-200,"now"],["MILLER COORS",-4700,"now"]]
-
-`GET /balance/`
-
-    curl -i -H 'Accept: application/json' http://localhost:5000/delete_points/
-
-### Response
-
-    HTTP/1.1 200 OK
-    Date: Thu, 24 Feb 2011 12:36:30 GMT
-    Status: 200 OK
-    Connection: close
-    Content-Type: application/json
+    
+### Headers
+    HTTP/1.0 200 OK
+    Content-type: application/json
     Content-Length: 35
+    Server: Werkzeug/1.0.1 Python/3.6.8
+    Date: Sun, 07 Feb 2021 18:40:11 GM
 
-    {"DANNON":1000,"MILLER COORS":5300,"UNILEVER":0}
+### Get points balance (/get_balance)
+
+### Request
+      Method = `GET`
+      Content-Type = `application/json`
+
+### Command (Windows):
+    curl -H "Content-Type: application/json" http://127.0.0.1:5000/get_balance
+    
+### Command (Linux, Mac):
+    curl -H "Content-Type: application/json" http://127.0.0.1:5000/get_balance
+    
+### Response
+      {
+         "DANNON":1000,
+         "MILLER COORS":5300,
+         "UNILEVER":0
+       }
+    
+### Headers
+    HTTP/1.0 200 OK
+    Content-type: application/json
+    Content-Length: 35
+    Server: Werkzeug/1.0.1 Python/3.6.8
+    Date: Sun, 07 Feb 2021 18:40:11 GM
 
 # Useful Docs and References
 * [Flask Documentation](https://flask.palletsprojects.com/en/1.1.x/)
