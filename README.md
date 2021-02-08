@@ -53,7 +53,7 @@ There are number of ways to view the response of the API endpoint. You can eithe
 ## Using the 'curl' command
 Curl is a very handy command to fire HTTP requests from the terminal.
 
-### Add points to user account (/add_points)
+### ---> Add points to user account (/add_points)
 
 ### Request
 
@@ -77,7 +77,7 @@ Curl is a very handy command to fire HTTP requests from the terminal.
     Server: Werkzeug/1.0.1 Python/3.6.8
     Date: Sun, 07 Feb 2021 18:40:11 GM
 
-### Deduct points from user account (/deduct_points)
+### ---> Deduct points from user account (/deduct_points)
 
 ### Request
 
@@ -102,7 +102,7 @@ Curl is a very handy command to fire HTTP requests from the terminal.
     Server: Werkzeug/1.0.1 Python/3.6.8
     Date: Sun, 07 Feb 2021 18:40:11 GM
 
-### Get points balance (/get_balance)
+### ---> Get points balance (/get_balance)
 
 ### Request
       Method = `GET`
@@ -127,6 +127,11 @@ Curl is a very handy command to fire HTTP requests from the terminal.
     Content-Length: 35
     Server: Werkzeug/1.0.1 Python/3.6.8
     Date: Sun, 07 Feb 2021 18:40:11 GM
+    
+## Using Postman API Client
+
+
+
 
 # Useful Docs and References
 * [Flask Documentation](https://flask.palletsprojects.com/en/1.1.x/)
