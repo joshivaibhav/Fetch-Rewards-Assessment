@@ -33,6 +33,7 @@ transactions = deque()
 # global variables concerning HTTP requests
 content_header = {"Content-type" : "application/json"}
 
+# Declaring a class structure to store incoming transaction instances. 
 class Transaction:
     def __init__(self, payer_name, points, timestamp):
         self.payer_name = payer_name
