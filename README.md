@@ -1,5 +1,7 @@
 # Fetch Rewards Back-end Engineering Assessment
 
+Below is the documentation for setting up, running and testing the flask webserver.
+
 # Dependencies / Requirements
 In order to run this project, you will need to install Python in your system, specifically Python3. Navigate to the Python website [here](https://www.python.org/downloads/) and follow the instructions to install Python3 as per your platform (Windows, MacOS, etc.)
 
