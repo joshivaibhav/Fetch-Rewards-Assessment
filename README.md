@@ -62,10 +62,10 @@ Curl is a very handy command to fire HTTP requests from the terminal.
       Content-Type = `application/json`
 
 ### Command (Windows):
-    curl -X POST -H "Content-Type: application/json" --data "{\"payer\": \"UNILIVER\", \"points\":\"200\", \"transaction_timestamp\": \"02/04 5PM\"}" http://127.0.0.1:5000/add_points
+    curl -i -X POST -H "Content-Type: application/json" --data "{\"payer\": \"UNILIVER\", \"points\":\"200\", \"transaction_timestamp\": \"02/04 5PM\"}" http://127.0.0.1:5000/add_points
     
 ### Command (Linux, Mac):
-    curl -i -H 'Accept: application/json''payer='DANNON'&'points'=300'&'transaction_timestamp'="10/31 10AM' http://localhost:5000/add_points/
+    curl -i -X POST -H 'Accept: application/json' -d "{"payer": "UNILIVER", "points":"200", "transaction_timestamp": "02/04 5PM"}" http://localhost:5000/add_points/
     
 ### Response
     Successfully added points to the user's account
@@ -86,10 +86,10 @@ Curl is a very handy command to fire HTTP requests from the terminal.
       Content-Type = `application/json`
 
 ### Command (Windows):
-    curl -X DELETE -H "Content-Type: application/json" --data "{\"points-to_deduct\": \"5000\"}" http://127.0.0.1:5000/deduct_points
+    curl -i -X DELETE -H "Content-Type: application/json" --data "{\"points-to_deduct\": \"5000\"}" http://127.0.0.1:5000/deduct_points
     
 ### Command (Linux, Mac):
-    curl -X DELETE -H "Content-Type: application/json" --data "{\"points-to_deduct\": \"5000\"}" http://127.0.0.1:5000/deduct_points
+    curl -i -X DELETE -H "Content-Type: application/json" -d "{"points-to_deduct": "5000"}" http://127.0.0.1:5000/deduct_points
     
 ### Response
 
@@ -109,10 +109,10 @@ Curl is a very handy command to fire HTTP requests from the terminal.
       Content-Type = `application/json`
 
 ### Command (Windows):
-    curl -H "Content-Type: application/json" http://127.0.0.1:5000/get_balance
+    curl -i -H "Content-Type: application/json" http://127.0.0.1:5000/get_balance
     
 ### Command (Linux, Mac):
-    curl -H "Content-Type: application/json" http://127.0.0.1:5000/get_balance
+    curl -i -H "Content-Type: application/json" http://127.0.0.1:5000/get_balance
     
 ### Response
       {
