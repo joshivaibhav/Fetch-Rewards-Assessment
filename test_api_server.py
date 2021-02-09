@@ -1,46 +1,53 @@
-import numpy as np
-import pytest
-#np.set_printoptions(suppress=True)
-
-from api_server import app as test_app
-
-@pytest.fixture
-def app():
-    yield test_app
-
-@pytest.fixture
-def client(app):
-    return app.test_client()
+try:
+    import unittest
+    import json
+    from api_server import app
+except Exception as e:
+    print("Some modules are missing {}". format(e))
 
 
-def test_add_points(client):
-    response = client.post('http://127.0.0.1:5000/add_points', json = {"payerName":"DANNON","points":300,
-    "transactionDate":"10/31 10AM"})
-    assert response.status_code == 200
+class FlaskTestCase(unittest.TestCase):
 
-    response = client.post('http://127.0.0.1:5000/add_points',
-    json = {"payerName":"UNILEVER","points":200,"transactionDate":"10/31 11AM"})
-    assert response.status_code == 200
+    # Test /add_points route
+    def test_add_points(self):
+        tester = app.test_client(self)
 
-    response = client.post('http://127.0.0.1:5000/add_points',
-    json = {"payerName":"DANNON","points":-200,"transactionDate":"10/31 3PM"})
-    assert response.status_code == 200
+        response = tester.post('http://127.0.0.1:5000/add_points',
+        json = {"payer":"DANNON","points":"300","transaction_timestamp":"10/31 10AM"})
+        self.assertEqual(response.status_code, 200)
 
-    response = client.post('http://127.0.0.1:5000/add_points',
-    json = {"payerName":"MILLER COORS","points":10000,"transactionDate":"11/1 2PM"})
-    assert response.status_code == 200
+        response = tester.post('http://127.0.0.1:5000/add_points',
+        json={"payer": "UNILEVER", "points": "200", "transaction_timestamp": "10/31 11AM"})
+        self.assertEqual(response.status_code, 200)
 
-    response = client.post('http://127.0.0.1:5000/add_points',
-    json = {"payerName":"DANNON","points":1000,"transactionDate":"11/2 2PM"})
-    assert response.status_code == 200
+        response = tester.post('http://127.0.0.1:5000/add_points',
+                               json={"payer": "DANNON", "points": "-200", "transaction_timestamp": "10/31 3PM"})
+        self.assertEqual(response.status_code, 200)
 
-def test_delete_points(client):
-    response = client.delete('http://127.0.0.1:5000/deduct_points',json={"points_to_deduct":5000})
-    print(response.data)
-    assert response.status_code == 200
+        response = tester.post('http://127.0.0.1:5000/add_points',
+                               json={"payer": "MILLER COORS", "points": "10000", "transaction_timestamp": "11/1 2PM"})
+        self.assertEqual(response.status_code, 200)
 
-def test_balance(client):
-    response = client.get('http://127.0.0.1:5000/get_balance')
-    print(response.data)
+        response = tester.post('http://127.0.0.1:5000/add_points',
+                               json={"payer": "DANNON", "points": "1000", "transaction_timestamp": "11/2 2PM"})
+        self.assertEqual(response.status_code, 200)
 
-    assert response.status_code == 200
+    # Test /deduct_points route
+    def test_deduct_points(self):
+        tester = app.test_client(self)
+        response = tester.delete('http://127.0.0.1:5000/deduct_points', json={"points_to_deduct": "5000"})
+        parsed_response = json.loads(response.data)
+        print(parsed_response)
+        self.assertEqual(response.status_code, 200)
+
+    # Test /get_balance route
+    def test_get_balance(self):
+        tester = app.test_client(self)
+        response = tester.get('http://127.0.0.1:5000/get_balance')
+        parsed_response = json.loads(response.data)
+        print(parsed_response)
+        self.assertEqual(response.status_code, 200)
+
+
+if __name__ == '__main__':
+    unittest.main()

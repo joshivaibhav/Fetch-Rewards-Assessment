@@ -16,10 +16,9 @@ add points, deduct points and view points balance. Constraints imposed are as be
 """
 
 # handling imports
-from flask import Flask, request, jsonify
-from datetime import datetime
 import json
 from collections import deque, defaultdict
+from flask import Flask, request, jsonify
 
 # Initializing the web server
 app = Flask("api_server")
@@ -28,7 +27,7 @@ app = Flask("api_server")
 accounts = defaultdict(int)
 total_points = 0
 
-# Initializing a queue data structure to keep track of and also process any incoming transactions.
+# Initializing a queue data structure to keep track of and process any incoming transactions in later calculations.
 transactions = deque()
 
 # global variables concerning HTTP requests
@@ -57,21 +56,6 @@ class Transaction:
 
     def set_transaction_timestamp(self, timestamp):
         self.transaction_timestamp = timestamp
-
-
-"""
-def convert_date_to_datetime(date):
-    
-    Function to convert Date object to Datetime object for better usability
-    Args:
-        date (Date): Date object in the given format (For example: 10/31 10AM)
-    Returns:
-        [DateTime]: Returns Datetime object
-    
-    date = date + '2020'
-    datetime_object = datetime.strptime(date, '%d/%j  %I%p%Y')
-    return datetime_object
-"""
 
 
 @app.route('/add_points', methods=['POST'])
@@ -145,10 +129,10 @@ def deduct_points():
     if total_points < points_to_deduct:
         return "Error: Not enough points", 400, content_header
     else:
-        points_list = []
+        updated_transactions = []
         while points_to_deduct > 0:
             transaction = transactions.popleft()
-            #print(transaction.get_payer_points(), transaction.get_payer_name(), transaction.get_transaction_date())
+
             current_points = transaction.get_payer_points()
             payer_name = transaction.get_payer_name()
             points_to_deduct -= current_points
@@ -160,20 +144,20 @@ def deduct_points():
                 points_deducted = current_points
             transaction.set_payer_points(points_deducted)
             transaction.set_transaction_timestamp("now")
-            points_list.append(transaction)
+            updated_transactions.append(transaction)
             accounts[payer_name] -= points_deducted
             total_points -= points_deducted
 
-    for transaction in points_list:
+    # adding a minus sign to indicate deduction of points
+    for transaction in updated_transactions:
         transaction_value = transaction.get_payer_points()
         transaction.set_payer_points(-transaction_value)
 
+    # prepare the response
     response = []
-    for transaction in points_list:
+    for transaction in updated_transactions:
         response.append([transaction.get_payer_name(), transaction.get_payer_points(), transaction.get_transaction_date()])
-    response = json.dumps(response)
-    print(response)
-    return response
+    return json.dumps(response)
 
 
 @app.route("/get_balance", methods=['GET'])
@@ -183,8 +167,7 @@ def show_balance():
     :return:
         JSON object that shows the balance points of each payer_name
     """
-
-    return jsonify(accounts)
+    return json.dumps(accounts)
 
 
 if __name__ == "__main__":
