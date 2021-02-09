@@ -45,9 +45,9 @@ The following table shows the different API endpoints and their specifications.
 
 # Testing the API
 
-You can test the API by running the test_api_server script :-
+Once you start the flask server, you can then test the API by running the test_api_server script :-
 ```
-python api_server.py
+python test_api_server.py
 ```
 # Viewing the response
 There are number of ways to view the response of the API endpoint. You can either use the terminal go for a convenient API client like Postman. Examples for both are provided below.
