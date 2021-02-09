@@ -134,48 +134,39 @@ Curl is a very handy command to fire HTTP requests from the terminal.
 
 ### ---> Add points to user account (/add_points)
 
-### Request Params and Response
+### Request Parameters and Response
 
       Method = `POST`
       Parameters = `payer`, `points`, `transaction_timestamp` 
       Content-Type = `application/json`
       
       The image below shows the postman configuration for the request. The response is also shown below in the same image
-      ![/add_points](https://github.com/joshivaibhav/Fetch-Rewards-Assessment/blob/main/imgs/add_points_postman.JPG)
+   ![/add_points](https://github.com/joshivaibhav/Fetch-Rewards-Assessment/blob/main/imgs/add_points_postman.JPG)
 
-### Response
     
     
 ### ---> Deduct points from user account (/deduct_points)
 
-### Request
+### Request Parameters and Response
 
       Method = `DELETE`
       Parameters = `points_to_deduct`
       Content-Type = `application/json`
       
       The image below shows the postman configuration for the request. The response is also shown below in the same image
-      ![/deduct_points](https://github.com/joshivaibhav/Fetch-Rewards-Assessment/blob/main/imgs/deduct_points_postman.JPG)
+   ![/deduct_points](https://github.com/joshivaibhav/Fetch-Rewards-Assessment/blob/main/imgs/deduct_points_postman.JPG)
     
-### Response
 
 ### ---> Get points balance (/get_balance)
 
-### Request
+### Request Parameteres and Response
       Method = `GET`
       Content-Type = `application/json`
       
       The image below shows the postman configuration for the request. The response is also shown below in the same image
-      ![/get_balance](https://github.com/joshivaibhav/Fetch-Rewards-Assessment/blob/main/imgs/get_balance_postman.JPG)
+   ![/get_balance](https://github.com/joshivaibhav/Fetch-Rewards-Assessment/blob/main/imgs/get_balance_postman.JPG)
     
-### Response
-      {
-         "DANNON":1000,
-         "MILLER COORS":5300,
-         "UNILEVER":0
-       }
     
-
 
 # Useful Docs and References
 * [Flask Documentation](https://flask.palletsprojects.com/en/1.1.x/)
