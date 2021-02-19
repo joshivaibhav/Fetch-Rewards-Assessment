@@ -139,7 +139,7 @@ def deduct_points():
             points_to_deduct -= current_points
             if points_to_deduct < 0:
                 points_deducted = current_points + points_to_deduct
-                transaction.set_payer_points(points_deducted)
+                transaction.set_payer_points(-points_to_deduct)
                 transactions.append(transaction)
             else:
                 points_deducted = current_points
