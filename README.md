@@ -59,7 +59,7 @@ Curl is a very handy command to fire HTTP requests from the command-line / termi
 
 ### Request
 
-      Method = `POST`
+      Method = `**POST**`
       Parameters = `payer`, `points`, `transaction_timestamp` 
       Content-Type = `application/json`
 
@@ -83,7 +83,7 @@ Curl is a very handy command to fire HTTP requests from the command-line / termi
 
 ### Request
 
-      Method = `DELETE`
+      Method = `**DELETE**`
       Parameters = `points_to_deduct`
       Content-Type = `application/json`
 
@@ -107,8 +107,8 @@ Curl is a very handy command to fire HTTP requests from the command-line / termi
 ### ---> Get points balance (/get_balance)
 
 ### Request
-      Method = `GET`
-      Content-Type = `application/json`
+      Method = `**GET**`
+      Content-Type = `**application/json**`
 
 ### Command (Windows):
     curl -i -H "Content-Type: application/json" http://127.0.0.1:5000/get_balance
