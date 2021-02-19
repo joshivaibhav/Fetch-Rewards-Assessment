@@ -53,7 +53,7 @@ python test_api_server.py
 There are number of ways to view the response of the API endpoint. You can either use the terminal go for a convenient API client like Postman. Examples for both are provided below.
 
 ## 1) Using the 'curl' command
-Curl is a very handy command to fire HTTP requests from the terminal.
+Curl is a very handy command to fire HTTP requests from the command-line / terminal.
 
 ### ---> Add points to user account (/add_points)
 
