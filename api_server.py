@@ -33,7 +33,7 @@ transactions = deque()
 # global variables concerning HTTP requests
 content_header = {"Content-type" : "application/json"}
 
-# Declaring a class structure to store incoming transaction instances. 
+
 class Transaction:
     def __init__(self, payer_name, points, timestamp):
         self.payer_name = payer_name
@@ -95,19 +95,15 @@ def add_points():
             return "Error : Invalid transaction record", 400, content_header
 
         # if the points are positive
-        elif payer_name in accounts and (accounts[payer_name] + points) > 0:
+        elif payer_name in accounts and (accounts[payer_name] + points) >= 0:
             accounts[payer_name] += points
             total_points += points
-            for i in range(len(transactions)):
-                payer = transactions[i].get_payer_name()
+            for transaction in transactions:
+                payer = transaction.get_payer_name()
                 if payer == payer_name:
-                    remaining = transactions[i].get_payer_points() + points
-                    if remaining <= 0:
-                        del transactions[i]
-                        points = remaining
-                    else:
-                        transactions[i].set_payer_points(remaining)
-                        break
+                    remaining = transaction.get_payer_points() + points
+                    transaction.set_payer_points(remaining)
+                    break
         else:
             return "Error : invalid transaction record", 400, content_header
 
@@ -137,15 +133,15 @@ def deduct_points():
             current_points = transaction.get_payer_points()
             payer_name = transaction.get_payer_name()
             points_to_deduct -= current_points
+
             if points_to_deduct < 0:
                 points_deducted = current_points + points_to_deduct
                 transaction.set_payer_points(-points_to_deduct)
                 transactions.append(transaction)
             else:
                 points_deducted = current_points
-            transaction.set_payer_points(points_deducted)
-            transaction.set_transaction_timestamp("now")
-            updated_transactions.append(transaction)
+
+            updated_transactions.append(Transaction(payer_name, points_deducted, "now"))
             accounts[payer_name] -= points_deducted
             total_points -= points_deducted
 
@@ -158,7 +154,7 @@ def deduct_points():
     response = []
     for transaction in updated_transactions:
         response.append([transaction.get_payer_name(), transaction.get_payer_points(), transaction.get_transaction_date()])
-    return json.dumps(response)
+    return json.dumps(response), 200, content_header
 
 
 @app.route("/get_balance", methods=['GET'])
@@ -168,7 +164,7 @@ def show_balance():
     :return:
         JSON object that shows the balance points of each payer_name
     """
-    return json.dumps(accounts)
+    return json.dumps(accounts), 200, content_header
 
 
 if __name__ == "__main__":
