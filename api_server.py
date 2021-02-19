@@ -98,15 +98,15 @@ def add_points():
         elif payer_name in accounts and (accounts[payer_name] + points) > 0:
             accounts[payer_name] += points
             total_points += points
-            for transaction in transactions:
-                payer = transaction.get_payer_name()
+            for i in range(len(transactions)):
+                payer = transactions[i].get_payer_name()
                 if payer == payer_name:
-                    remaining = transaction.get_payer_points() + points
+                    remaining = transactions[i].get_payer_points() + points
                     if remaining <= 0:
-                        del transactions[transaction.get_payer_name()]
+                        del transactions[i]
                         points = remaining
                     else:
-                        transaction.set_payer_points(remaining)
+                        transactions[i].set_payer_points(remaining)
                         break
         else:
             return "Error : invalid transaction record", 400, content_header
