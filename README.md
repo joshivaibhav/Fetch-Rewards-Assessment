@@ -1,23 +1,23 @@
 # Fetch Rewards Back-end Engineering Assessment
 
-Below is the documentation for setting up, running and testing the flask webserver.
+Below is the documentation for stting up, running and testing the Flask webserver.
 
 # Dependencies / Requirements
 In order to run this project, you will need to install Python in your system, specifically Python3. Navigate to the Python website [here](https://www.python.org/downloads/) and follow the instructions to install Python3 as per your platform (Windows, MacOS, etc.)
 
-Once you have Python installed, you will need the dependencies / requirements for this project. The requirements.txt file contains the libraries that you will need. Pip is a popular command that is used to install packages in Python. Open the terminal and run the command below
+Once you have Python installed, you will need the dependencies / requirements for this project. The requirements.txt file contains the libraries that you will need. Pip is a popular command that is used to install packages in Python. Open the terminal and run the command below :-
 
 ```
 pip install -r requirements.txt
 ```
 # Running this project
 
-Once you have the requirements installed, navigate to the project folder and open up the terminal. Fire up the flask server by the below command:
+Once you have the requirements installed, navigate to the project folder and open up the terminal. Fire up the flask server by typing the below command:
 
 ```
 python api_server.py
 ```
-You should see output as below :-
+You should see an output as below :-
 ```
 *  Serving Flask app "api_server" (lazy loading)
  * Environment: production
