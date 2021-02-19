@@ -91,11 +91,11 @@ def add_points():
     elif points < 0:
 
         # if the points fall below zero
-        if payer_name in accounts and (accounts[payer_name] - points) < 0:
+        if payer_name in accounts and (accounts[payer_name] + points) < 0:
             return "Error : Invalid transaction record", 400, content_header
 
         # if the points are positive
-        elif payer_name in accounts and (accounts[payer_name] - points) > 0:
+        elif payer_name in accounts and (accounts[payer_name] + points) > 0:
             accounts[payer_name] += points
             total_points += points
             for transaction in transactions:
